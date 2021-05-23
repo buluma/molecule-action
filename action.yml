@@ -1,0 +1,45 @@
+---
+name: Test Ansible roles with Molecule
+description: Run Molecule to test Ansible roles
+author: Robert de Bock <robert@meinit.nl>
+
+inputs:
+  namespace:
+    description: The [Docker Hub](https://hub.docker.com/) namespace where the image can be found.
+    required: false
+    default: buluma
+  image:
+    description: The image you want to run on.
+    required: false
+    default: fedora
+  tag:
+    description: The tag of the container image to use.
+    required: false
+    default: latest
+  options:
+    description: Options you can pass to [`tox`](https://tox.readthedocs.io/en/latest/), for example `--parallel all`.
+    required: false
+  command:
+    description: What command to pass to [molecule](https://molecule.readthedocs.io/en/latest/), for example `lint` or `syntax`.
+    required: false
+    default: test
+  scenario:
+    description: The molecule scenario to run.
+    required: false
+    default: default
+
+runs:
+  using: docker
+  image: 'docker://buluma/github-action-molecule:1.0.0'
+  env:
+    ANSIBLE_ROLES_PATH: "../"
+    namespace: ${{ inputs.namespace }}
+    image: ${{ inputs.image }}
+    tag: ${{ inputs.tag }}
+    options: ${{ inputs.options }}
+    command: ${{ inputs.command }}
+    scenario: ${{ inputs.scenario }}
+
+branding:
+  icon: play
+  color: green
