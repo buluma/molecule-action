@@ -30,7 +30,7 @@ inputs:
 
 runs:
   using: docker
-  image: 'docker://buluma/github-action-molecule:1.0.1'
+  image: 'docker://buluma/github-action-molecule:latest'
   env:
     ANSIBLE_ROLES_PATH: "../"
     namespace: ${{ inputs.namespace }}
