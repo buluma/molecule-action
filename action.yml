@@ -1,7 +1,7 @@
 ---
-name: Test Ansible roles with Molecule
+name: Test Ansible roles with Buluma Molecule
 description: Run Molecule to test Ansible roles
-author: Robert de Bock <robert@meinit.nl>
+author: Michael Buluma
 
 inputs:
   namespace:
@@ -30,7 +30,7 @@ inputs:
 
 runs:
   using: docker
-  image: 'docker://buluma/github-action-molecule:1.0.0'
+  image: 'docker://buluma/github-action-molecule:1.0.1'
   env:
     ANSIBLE_ROLES_PATH: "../"
     namespace: ${{ inputs.namespace }}
