@@ -1,5 +1,5 @@
 ---
-name: Test Ansible roles with Buluma Molecule
+name: Buluma - Molecule
 description: Run Molecule to test Ansible roles
 author: Michael Buluma
 
