@@ -1,4 +1,4 @@
-name: Pull detached upstream automatically from https://github.com/<owner>/<repo>
+name: Pull detached upstream automatically from https://github.com/robertdebock/molecule-action
 
 on:
   # Possibility to run it manually
