@@ -27,5 +27,5 @@ jobs:
           upstreamrepo: https://github.com/robertdebock/molecule-action
           upstreambranch: master
         env:
-#           GITHUB_PAT: ${{ secrets.GH_PAT }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_PAT: ${{ secrets.GH_PAT }}
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
