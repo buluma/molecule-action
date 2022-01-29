@@ -28,7 +28,7 @@ This action expects the following (default Ansible role) structure:
     └── main.yml
 ```
 
-If you are missing the `molecule` directory, please have a look at this [skeleton role](https://github.com/robertdebock/ansible-role-skeleton) or one of the many examples listed on [my website](https://robertdebock.nl/).
+If you are missing the `molecule` directory, please have a look at this [skeleton role](https://github.com/buluma/ansible-role-skeleton) or one of the many examples listed on [my website](https://buluma.co.ke/).
 
 When `tox.ini` is found, [tox](https://tox.readthedocs.io/en/latest/) is used to test the role. Tox will install all dependecies found in `tox.ini` itself, meaning `tox.ini` determines the version of [molecule](https://molecule.readthedocs.io/en/latest/) that is used.
 
@@ -36,7 +36,7 @@ When `tox.ini` is found, [tox](https://tox.readthedocs.io/en/latest/) is used to
 
 ### `namespace`
 
-The Docker Hub namespace where the image is in. Default `"robertdebock"`.
+The Docker Hub namespace where the image is in. Default `"buluma"`.
 
 ### `image`
 
@@ -60,7 +60,7 @@ The molecule scenario to run. Default `"default"`
 
 ## Example usage
 
-Here is a default configuration that tests your role on `namespace: robertdebock`, `image: fedora`, `tag: latest`.
+Here is a default configuration that tests your role on `namespace: buluma`, `image: fedora`, `tag: latest`.
 
 ```yaml
 ---
@@ -76,7 +76,7 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: molecule
-        uses: buluma/molecule-action@2.3.4
+        uses: buluma/molecule-action@4.0.5
 ```
 
 NOTE: the `checkout` action needs to place the file in `${{ github.repository }}` in order for Molecule to find your role.
@@ -99,7 +99,7 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: molecule
-        uses: buluma/molecule-action@2.3.4
+        uses: buluma/molecule-action@4.0.5
         with:
           command: lint
   test:
@@ -122,9 +122,23 @@ jobs:
         with:
           path: "${{ github.repository }}"
       - name: molecule
-        uses: buluma/molecule-action@2.3.4
+        uses: buluma/molecule-action@4.0.5
         with:
           image: "${{ matrix.image }}"
           options: parallel
           scenario: my_specific_scenario
+```
+
+## Debugging
+
+You can enable Molecule debugging by using this pattern:
+
+```yaml
+# Stuff omitted.
+      - name: molecule
+        uses: buluma/molecule-action@4.0.5
+        with:
+          image: ${{ matrix.config.image }}
+          tag: ${{ matrix.config.tag }}
+          command: "--debug test"
 ```
