@@ -1,7 +1,7 @@
 ---
 name: Buluma - Molecule
 description: Run Molecule to test Ansible roles
-author: Michael Buluma <bulumaknight@gmail.com>
+author: Michael Buluma <me@buluma.me.ke>
 
 inputs:
   namespace:
@@ -30,7 +30,7 @@ inputs:
 
 runs:
   using: docker
-  image: 'docker://buluma/github-action-molecule:4.0.5'
+  image: 'docker://buluma/github-action-molecule:4.0.6'
   env:
     ANSIBLE_ROLES_PATH: "../"
     ANSIBLE_ASYNC_DIR: "/tmp/.ansible_async"
