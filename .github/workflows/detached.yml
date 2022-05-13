@@ -7,15 +7,15 @@ on:
   schedule:
     # Run this every day at 02:22 UTC
     - cron: '22 2 * * *'
-  
-  
+
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
       # Checkout the current repo
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       # Fetch the history and unshallow the repo so that it can be used
       - name: Fetch all history for all tags and branches
         run: git fetch --prune --unshallow
